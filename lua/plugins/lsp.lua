@@ -18,7 +18,7 @@ return {
             hint = {
               enable = true,
               paramType = true,
-              paramName = "Disable",
+              paramName = "All",
               arrayIndex = "Disable",
               semicolon = "Disable",
             },
