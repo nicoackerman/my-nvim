@@ -7,7 +7,7 @@
 -- ========================
 
 -- Undo and redo
-vim.keymap.set("n", "<C-z>", "u", { noremap = true, silent = true }) -- Ctrl+z = undo
+vim.keymap.set("n", "<C-z>", "u", { noremap = true, silent = true })       -- Ctrl+z = undo
 vim.keymap.set("n", "<C-S-z>", "<C-r>", { noremap = true, silent = true }) -- Ctrl+Shift+z = redo
 
 -- Hover documentation from LSP
@@ -20,7 +20,7 @@ vim.keymap.set("n", "<leader>ya", 'ggyG"+y', { desc = "Yank entire file" })
 -- Delete / Change / Paste without yanking
 -- ========================
 
-vim.keymap.set("n", "x", '"_x') -- Delete single char without copying it
+vim.keymap.set("n", "x", '"_x')         -- Delete single char without copying it
 vim.keymap.set("n", "<Leader>p", '"0p') -- Paste the last yanked text (not last deleted)
 vim.keymap.set("n", "<Leader>P", '"0P') -- Same as above but paste before cursor
 vim.keymap.set("v", "<Leader>p", '"0p') -- Paste in visual mode from yank register
@@ -41,6 +41,10 @@ vim.keymap.set("n", "dw", 'vb"_d') -- Select word backwards and delete silently
 -- ========================
 -- LSP Navigation
 -- ========================
+-- 🔹 Format the current buffer
+vim.keymap.set("n", "<leader>f", function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Format code" })
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" }) -- Jump to definition
 
@@ -60,6 +64,14 @@ vim.api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = false }) -- Exit insert 
 -- ========================
 -- Buffer / Line editing
 -- ========================
+
+-- Mover línea en modo normal
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
+
+-- Mover bloque en modo visual
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
 -- Select all text in buffer
 vim.keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select entire buffer" })

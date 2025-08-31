@@ -6,7 +6,7 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.showbreak = "  " -- Two spaces for a visual indent
 vim.opt.textwidth = 81 -- For automatic hard wrapping
-vim.g.autoformat = true
+vim.g.autoformat = false
 
 vim.diagnostic.config({
   virtual_text = true, -- mostrar error en la misma línea
